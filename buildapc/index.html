@@ -8,6 +8,7 @@
   </head>
 
   <body>
+    <div class="site-container">
     <header class="main-header">
       <h1 class="title">Let's Start Building</h1>
       <nav class="top-nav">
@@ -42,6 +43,13 @@
             <button type="button" data-filter="PSU">PSU</button>
             <button type="button" data-filter="Graphics">Graphics</button>
             <button type="button" data-filter="Motherboard">Motherboard</button>
+            <select id="sort-select" class="sort-select">
+              <option value="default">Sort by</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A to Z</option>
+              <option value="name-desc">Name: Z to A</option>
+            </select>
           </div>
         </div>
         <div id="product-list" class="product-list">
@@ -267,5 +275,6 @@
         </div>
       </aside>
     </section>
+    </div>
   </body>
 </html>

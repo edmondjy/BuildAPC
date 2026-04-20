@@ -2,6 +2,17 @@ html,
 body {
   margin: 0;
   padding: 0;
+  background: #fff;
+}
+
+.site-container {
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 64px;
+  padding-right: 64px;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 
 .main-header {
@@ -203,8 +214,8 @@ body {
 
 .product-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 240px));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 32px 40px;
   justify-content: start;
 }
 
