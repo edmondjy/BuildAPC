@@ -1,0 +1,240 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Build a PC | Catalog</title>
+    <meta name="description" content="Build a Computer Budget" />
+    <link rel="stylesheet" href="../style.css" />
+    <script type="text/javascript" src="buildapc.js" defer></script>
+  </head>
+
+  <body>
+    <header class="main-header">
+      <h1 class="title">Let's Start Building</h1>
+      <nav class="top-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Build A PC</a>
+      </nav>
+    </header>
+
+    <section class="budget-section">
+      <h2>Choose a Budget</h2>
+      <div class="budget-buttons">
+        <button type="button" data-budget="500">$500</button>
+        <button type="button" data-budget="1000">$1,000</button>
+        <button type="button" data-budget="1500">$1,500</button>
+        <button type="button" data-budget="2000">$2,000</button>
+      </div>
+      <div class="budget-summary">
+        <span>Budget: <strong id="budget-amount">-</strong></span>
+        <span>Remaining: <strong id="budget-remaining">Select a budget</strong></span>
+      </div>
+      <p id="budget-warning" class="budget-warning">Pick a budget and add parts to the cart.</p>
+    </section>
+
+    <section class="catalog-layout">
+      <section class="catalog-section">
+        <div class="catalog-header">
+          <h2>Parts Catalog</h2>
+          <div class="filter-controls">
+            <button type="button" data-filter="all" class="active">All</button>
+            <button type="button" data-filter="CPU">CPU</button>
+            <button type="button" data-filter="Case">Case</button>
+            <button type="button" data-filter="PSU">PSU</button>
+            <button type="button" data-filter="Graphics">Graphics</button>
+          </div>
+        </div>
+        <div id="product-list" class="product-list">
+
+<!-- CPUs -->
+          <article class="product-card" data-category="CPU">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=CPU" alt="Intel Core i3-12100F" />
+            <h3>Intel Core i3-12100F</h3>
+            <p class="product-category">CPU</p>
+            <p class="product-description">Budget-friendly quad-core for light gaming and streaming.</p>
+            <p class="product-price">$110</p>
+          </article>
+          <article class="product-card" data-category="CPU">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=CPU" alt="AMD Ryzen 5 5600" />
+            <h3>AMD Ryzen 5 5600</h3>
+            <p class="product-category">CPU</p>
+            <p class="product-description">A strong mid-range processor for gaming and streaming.</p>
+            <p class="product-price">$170</p>
+          </article>
+          <article class="product-card" data-category="CPU">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=CPU" alt="Intel Core i7-12700KF" />
+            <h3>Intel Core i7-12700KF</h3>
+            <p class="product-category">CPU</p>
+            <p class="product-description">High-performance CPU for heavy gaming and content creation.</p>
+            <p class="product-price">$350</p>
+          </article>
+          <article class="product-card" data-category="CPU">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=CPU" alt="AMD Ryzen 9 5950X" />
+            <h3>AMD Ryzen 9 5950X</h3>
+            <p class="product-category">CPU</p>
+            <p class="product-description">Premium 16-core processor for extreme performance.</p>
+            <p class="product-price">$550</p>
+          </article>
+
+          <!-- Cases -->
+          <article class="product-card" data-category="Case">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=Case" alt="Fractal Design Core 1000" />
+            <h3>Fractal Design Core 1000</h3>
+            <p class="product-category">Case</p>
+            <p class="product-description">Budget micro-ATX case with solid build quality.</p>
+            <p class="product-price">$45</p>
+          </article>
+          <article class="product-card" data-category="Case">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=Case" alt="NZXT H510" />
+            <h3>NZXT H510</h3>
+            <p class="product-category">Case</p>
+            <p class="product-description">Compact mid-tower with a clean design and good airflow.</p>
+            <p class="product-price">$80</p>
+          </article>
+          <article class="product-card" data-category="Case">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=Case" alt="Lian Li Lancool 205M" />
+            <h3>Lian Li Lancool 205M</h3>
+            <p class="product-category">Case</p>
+            <p class="product-description">Mid-tower with tempered glass and excellent thermals.</p>
+            <p class="product-price">$120</p>
+          </article>
+          <article class="product-card" data-category="Case">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=Case" alt="Corsair 5000T RGB" />
+            <h3>Corsair 5000T RGB</h3>
+            <p class="product-category">Case</p>
+            <p class="product-description">Premium tower with RGB lighting and dual tempered glass.</p>
+            <p class="product-price">$200</p>
+          </article>
+
+          <!-- Power Supplies -->
+          <article class="product-card" data-category="PSU">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=PSU" alt="Thermaltake 500W 80+ Bronze" />
+            <h3>Thermaltake 500W 80+ Bronze</h3>
+            <p class="product-category">PSU</p>
+            <p class="product-description">Entry-level power supply for budget builds.</p>
+            <p class="product-price">$45</p>
+          </article>
+          <article class="product-card" data-category="PSU">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=PSU" alt="EVGA 600 W1 80+ Bronze" />
+            <h3>EVGA 600 W1 80+ Bronze</h3>
+            <p class="product-category">PSU</p>
+            <p class="product-description">Reliable power supply with enough wattage for most budget builds.</p>
+            <p class="product-price">$55</p>
+          </article>
+          <article class="product-card" data-category="PSU">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=PSU" alt="Seasonic 750W 80+ Gold" />
+            <h3>Seasonic 750W 80+ Gold</h3>
+            <p class="product-category">PSU</p>
+            <p class="product-description">Semi-modular with high efficiency for modern systems.</p>
+            <p class="product-price">$110</p>
+          </article>
+          <article class="product-card" data-category="PSU">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=PSU" alt="Corsair 1000W 80+ Platinum" />
+            <h3>Corsair 1000W 80+ Platinum</h3>
+            <p class="product-category">PSU</p>
+            <p class="product-description">Fully modular with excellent platform for high-end builds.</p>
+            <p class="product-price">$180</p>
+          </article>
+
+          <!-- Graphics -->
+          <article class="product-card" data-category="Graphics">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=Graphics" alt="NVIDIA RTX 4050" />
+            <h3>NVIDIA RTX 4050</h3>
+            <p class="product-category">Graphics</p>
+            <p class="product-description">Entry-level card for 1080p gaming.</p>
+            <p class="product-price">$200</p>
+          </article>
+          <article class="product-card" data-category="Graphics">
+            <img class="product-image" src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/a563c454-b88b-4086-bf18-4bb06064a185.png;maxHeight=960;maxWidth=450?format=webp" alt="NVIDIA RTX 4060 ti" />
+            <h3>ASUS GEFORCE RTX 4060 ti</h3>
+            <p class="product-category">Graphics</p>
+            <p class="product-description">Great 1080p and 1440p performance for modern games.</p>
+            <p class="product-price">$400</p>
+          </article>
+          <article class="product-card" data-category="Graphics">
+            <img class="product-image" src="https://www.starpromotionlb.com/wp-content/uploads/2023/10/MSI-GeForce-RTX-4070-Ti-GAMING-X-SLIM-12G.jpg" alt="NVIDIA RTX 4070 ti" />
+            <h3>ASUS GEFORCE RTX 4070 ti</h3>
+            <p class="product-category">Graphics</p>
+            <p class="product-description">Excellent 1440p and high refresh 1080p gaming.</p>
+            <p class="product-price">$800</p>
+          </article>
+          <article class="product-card" data-category="Graphics">
+            <img class="product-image" src="https://m.media-amazon.com/images/I/81rCZZvkIVL.jpg" alt="NVIDIA RTX 4080 Super" />
+            <h3>ASUS TUF GEFORCE RTX 4080 Super</h3>
+            <p class="product-category">Graphics</p>
+            <p class="product-description">Premium card for 4K gaming and professional work.</p>
+            <p class="product-price">$1000</p>
+          </article>
+
+          <!-- Memory -->
+          <article class="product-card" data-category="Memory">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=Memory" alt="G.Skill Flare X 16GB DDR4" />
+            <h3>G.Skill Flare X 16GB DDR4</h3>
+            <p class="product-category">Memory</p>
+            <p class="product-description">Budget-friendly 16GB DDR4 RAM for everyday computing.</p>
+            <p class="product-price">$55</p>
+          </article>
+          <article class="product-card" data-category="Memory">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=Memory" alt="Corsair Vengeance 16GB DDR4" />
+            <h3>Corsair Vengeance 16GB DDR4</h3>
+            <p class="product-category">Memory</p>
+            <p class="product-description">High-performance RAM with tight timings for smooth multitasking.</p>
+            <p class="product-price">$65</p>
+          </article>
+          <article class="product-card" data-category="Memory">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=Memory" alt="Kingston Fury Beast 32GB DDR4" />
+            <h3>Kingston Fury Beast 32GB DDR4</h3>
+            <p class="product-category">Memory</p>
+            <p class="product-description">32GB capacity for content creators and heavy multitaskers.</p>
+            <p class="product-price">$110</p>
+          </article>
+          <article class="product-card" data-category="Memory">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=Memory" alt="Corsair Dominator Platinum 64GB DDR5" />
+            <h3>Corsair Dominator Platinum 64GB DDR5</h3>
+            <p class="product-category">Memory</p>
+            <p class="product-description">Premium DDR5 RAM for next-generation performance.</p>
+            <p class="product-price">$300</p>
+          </article>
+
+          <!-- Storage -->
+          <article class="product-card" data-category="Storage">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=Storage" alt="Kingston A2000 500GB" />
+            <h3>Kingston A2000 500GB</h3>
+            <p class="product-category">Storage</p>
+            <p class="product-description">Budget NVMe SSD for OS and essential programs.</p>
+            <p class="product-price">$45</p>
+          </article>
+          <article class="product-card" data-category="Storage">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=Storage" alt="Samsung 970 EVO Plus 1TB" />
+            <h3>Samsung 970 EVO Plus 1TB</h3>
+            <p class="product-category">Storage</p>
+            <p class="product-description">Fast NVMe SSD for quick load times and reliable storage.</p>
+            <p class="product-price">$95</p>
+          </article>
+          <article class="product-card" data-category="Storage">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=Storage" alt="WD Black SN850X 2TB" />
+            <h3>WD Black SN850X 2TB</h3>
+            <p class="product-category">Storage</p>
+            <p class="product-description">High-speed 2TB SSD for gaming and content creation.</p>
+            <p class="product-price">$160</p>
+          </article>
+          <article class="product-card" data-category="Storage">
+            <img class="product-image" src="https://via.placeholder.com/320x180?text=Storage" alt="Sabrent Rocket 4TB Gen4" />
+            <h3>Sabrent Rocket 4TB Gen4</h3>
+            <p class="product-category">Storage</p>
+            <p class="product-description">Large capacity 4TB NVMe for massive game libraries.</p>
+            <p class="product-price">$280</p>
+          </article>
+        </div>
+      </section>
+
+      <aside class="cart-section">
+        <h2>Shopping Cart</h2>
+        <div id="cart-items" class="cart-items"></div>
+        <div class="cart-footer">
+          <div class="cart-total">Total: <strong id="cart-total">$0</strong></div>
+          <button id="clear-cart" type="button">Clear Cart</button>
+        </div>
+      </aside>
+    </section>
+  </body>
+</html>
