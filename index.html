@@ -13,12 +13,20 @@
       <h1 class="title">Let's Start Building</h1>
     </header>
 
-
+  <div class="catalog-header">
+    <h2>Parts Catalog</h2>
+    <div class="filter-controls">
+      <select id="sort-price" class="price-dropdown">
+        <option value="default">Sort by Price</option>
+        <option value="low-to-high">Lowest to Highest</option>
+        <option value="high-to-low">Highest to Lowest</option>
+      </select>
+    </div>
+  </div>
 
     <section class="catalog-layout">
       <section class="catalog-section">
         <div class="catalog-header">
-          <h2>Parts Catalog</h2>
           <div class="filter-controls">
             <button type="button" data-filter="all" class="active">All</button>
             <button type="button" data-filter="CPU">CPU</button>
@@ -64,7 +72,6 @@
           </article>
 
 <!-- CPU Coolers -->
-
           <article class="product-card" data-category="CPU Cooler">
             <img class="product-image" src="https://www.bequiet.com/volumes/pim/cooler/darkrock/darkrockpro4/3d/017.jpg" alt="be quiet! Dark Rock Pro 4" />
             <h3>be quiet! Dark Rock Pro 4</h3>
@@ -280,6 +287,7 @@
         </div>
       </section>
 
+    <!-- Budget and Cart Section -->
       <div class="budget-and-cart">
         <div class="budget-panel">
           <h2>Choose a Budget</h2>

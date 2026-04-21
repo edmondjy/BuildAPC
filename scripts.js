@@ -104,6 +104,7 @@ function removeLastCard() {
  */
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Grab all our elements
   const budgetButtons = document.querySelectorAll("[data-budget]");
   const filterButtons = document.querySelectorAll("[data-filter]");
   const budgetAmountDisplay = document.getElementById("budget-amount");
@@ -113,12 +114,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartItemsDiv = document.getElementById("cart-items");
   const cartTotalDiv = document.getElementById("cart-total");
   const clearCartBtn = document.getElementById("clear-cart");
+  const productListContainer = document.getElementById("product-list");
+  
+  // Note: Make sure your HTML has an element with id="sort-price" for this to work!
+  const sortPriceDropdown = document.getElementById("sort-price");
 
+  // State variables
   let selectedBudget = null;
   let selectedFilter = "all";
+  let selectedPriceLimit = "all"; 
   let cart = [];
 
-  productCards.forEach((card) => {
+  productCards.forEach((card, index) => {
+    card.dataset.originalIndex = index;
+
     const productName = card.querySelector("h3").textContent;
     const productPriceText = card.querySelector(".product-price").textContent;
     const priceValue = parseInt(productPriceText.replace("$", ""));
@@ -132,9 +141,8 @@ document.addEventListener("DOMContentLoaded", () => {
     card.appendChild(button);
   });
 
-  // Cart Functions 
+  // --- CART FUNCTIONS ---
   function addToCart(productName, price) {
-    // We use Date.now() as a unique ID so we can remove specific items
     cart.push({ name: productName, price: price, id: Date.now() });
     updateUI();
   }
@@ -144,9 +152,8 @@ document.addEventListener("DOMContentLoaded", () => {
     updateUI();
   }
 
-  //  UI Update Logic 
+  // --- UI UPDATE LOGIC ---
   function updateUI() {
-    // 1. Update Cart List
     cartItemsDiv.innerHTML = "";
     let total = 0;
 
@@ -165,10 +172,9 @@ document.addEventListener("DOMContentLoaded", () => {
       total += item.price;
     });
 
-    // Update Total Display
     cartTotalDiv.textContent = `$${total}`;
 
-    // Update Budget Logic
+    // Budget Logic
     if (selectedBudget === null) {
       budgetRemainingDisplay.textContent = "Select a budget";
       budgetWarningDisplay.textContent = "Pick a budget and add parts to the cart.";
@@ -187,47 +193,79 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // --- FILTER & SORT FUNCTIONS ---
+  function applyFilters() {
+    productCards.forEach((card) => {
+      const category = card.dataset.category;
+      const price = parseInt(card.querySelector(".product-price").textContent.replace("$", ""));
+      const matchesCategory = selectedFilter === "all" || category === selectedFilter;
+      const matchesPrice = selectedPriceLimit === "all" || price <= parseInt(selectedPriceLimit);
 
+      if (matchesCategory && matchesPrice) {
+        card.style.display = "flex";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
+
+  function sortProducts(order) {
+    const cards = Array.from(productListContainer.querySelectorAll(".product-card"));
+
+    cards.sort((a, b) => {
+      // Handle the "No Sort" (Default) option
+      if (order === "default") {
+        return a.dataset.originalIndex - b.dataset.originalIndex;
+      }
+
+      const priceA = parseInt(a.querySelector(".product-price").textContent.replace("$", ""));
+      const priceB = parseInt(b.querySelector(".product-price").textContent.replace("$", ""));
+
+      if (order === "low-to-high") {
+        return priceA - priceB;
+      } else if (order === "high-to-low") {
+        return priceB - priceA;
+      }
+      return 0; 
+    });
+
+    // Re-append to change order on screen
+    cards.forEach(card => productListContainer.appendChild(card));
+  }
+
+  // --- EVENT LISTENERS ---
+  
   // Clear Cart
   clearCartBtn.addEventListener("click", () => {
     cart = [];
     updateUI();
   });
 
-  // Budget Selection
+  // Budget Buttons
   budgetButtons.forEach((button) => {
     button.addEventListener("click", () => {
       selectedBudget = Number(button.dataset.budget);
-      
-      // Update Button Styles
       budgetButtons.forEach((btn) => btn.classList.remove("active"));
       button.classList.add("active");
-
-      // Update Text
       budgetAmountDisplay.textContent = `$${selectedBudget}`;
       updateUI();
     });
   });
 
-  // Category Filtering
+  // Category Filter Buttons
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
       selectedFilter = button.dataset.filter;
-
-      // Update Button Styles
       filterButtons.forEach((btn) => btn.classList.remove("active"));
       button.classList.add("active");
-
-      // Filter Cards
-      productCards.forEach((card) => {
-        const category = card.dataset.category;
-        if (selectedFilter === "all" || category === selectedFilter) {
-          card.style.display = "flex"; // Match the flex layout of your CSS
-        } else {
-          card.style.display = "none";
-        }
-      });
+      applyFilters();
     });
   });
-});
 
+  // Sorting Dropdown Listener
+  if (sortPriceDropdown) {
+    sortPriceDropdown.addEventListener("change", (event) => {
+      sortProducts(event.target.value);
+    });
+  }
+});
