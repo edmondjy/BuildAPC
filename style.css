@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   margin: 0;
@@ -169,16 +173,20 @@ body {
   flex-shrink: 0;
 }
 
-.budget-panel {
+/* 2. Grouped Sidebar Elements to guarantee identical borders/alignment */
+.budget-panel,
+.cart-section {
   background: rgba(30, 41, 59, 0.8);
   border: 1px solid rgba(148, 163, 184, 0.2);
   border-radius: 12px;
   padding: 16px;
+  width: 100%; /* They will now both fill the 300px sidebar perfectly */
   backdrop-filter: blur(4px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-.budget-panel h2 {
+.budget-panel h2,
+.cart-section h2 {
   margin-top: 0;
   margin-bottom: 12px;
   font-size: 1.1rem;
@@ -389,22 +397,6 @@ body {
   transform: translateY(0);
 }
 
-.cart-section {
-  background: rgba(30, 41, 59, 0.8);
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  border-radius: 12px;
-  padding: 16px;
-  width: 100%;
-  backdrop-filter: blur(4px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-.cart-section h2 {
-  margin-top: 0;
-  color: #e2e8f0;
-  font-weight: 600;
-}
-
 .cart-items {
   min-height: 140px;
 }
@@ -457,7 +449,6 @@ body {
   background-color: rgba(239, 68, 68, 0.2);
   border-color: rgba(239, 68, 68, 0.5);
   color: #ff6b6b;
-}
 }
 
 .footer {
