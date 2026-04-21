@@ -104,7 +104,6 @@ function removeLastCard() {
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Grab all our elements
   const budgetButtons = document.querySelectorAll("[data-budget]");
   const filterButtons = document.querySelectorAll("[data-filter]");
   const budgetAmountDisplay = document.getElementById("budget-amount");
@@ -115,11 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartTotalDiv = document.getElementById("cart-total");
   const clearCartBtn = document.getElementById("clear-cart");
   const productListContainer = document.getElementById("product-list");
-  
-  // Note: Make sure your HTML has an element with id="sort-price" for this to work!
-  const sortPriceDropdown = document.getElementById("sort-price");
+    const sortPriceDropdown = document.getElementById("sort-price");
 
-  // State variables
   let selectedBudget = null;
   let selectedFilter = "all";
   let selectedPriceLimit = "all"; 
@@ -141,9 +137,9 @@ document.addEventListener("DOMContentLoaded", () => {
     card.appendChild(button);
   });
 
-  // --- CART FUNCTIONS ---
+  // cart function
   function addToCart(productName, price) {
-    cart.push({ name: productName, price: price, id: Date.now() });
+    cart.unshift({ name: productName, price: price, id: Date.now() });
     updateUI();
   }
 
@@ -152,7 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateUI();
   }
 
-  // --- UI UPDATE LOGIC ---
   function updateUI() {
     cartItemsDiv.innerHTML = "";
     let total = 0;
@@ -193,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --- FILTER & SORT FUNCTIONS ---
+  // Filter & sort logic
   function applyFilters() {
     productCards.forEach((card) => {
       const category = card.dataset.category;
