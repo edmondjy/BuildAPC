@@ -96,12 +96,8 @@ function removeLastCard() {
   showCards(); // Call showCards again to refresh
 }
 
+//---------------------------------
 
-// Adds a top navigation in the top right corner of the page
-const pages = [
-  {url: 'index.html', title: 'Home'},
-  {url: 'buildapc/index.html', title: 'Build A PC'}, 
-];
 
 const budgetButtons = document.querySelectorAll("[data-budget]");
 const filterButtons = document.querySelectorAll("[data-filter]");
